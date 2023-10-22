@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Наши туры</title>
+    <link type="text/css" rel="stylesheet"  href="{% static 'common_styles.css' %}">
+    <style>
+        table {
+            width: 100%;
+            background: antiquewhite;
+            color: black;
+            border: chocolate;
+            border-width: 3px;
+            border-spacing: 3px;
+        }
+        .menu{
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 0;
+            background-color: coral;
+            overflow: hidden;
+        }
+        .menu a {
+            font-family: 'Lucida Grande', Arial, sans-serif;
+            font-size: 30%;
+            color: brown;
+        }
+        .menu li {
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+<ul class="menu">
+    <li><a href="/tours">Туры</a></li>
+    <li><a href="/home">Главная</a></li>
+    <li><a href="/registration_and_authentication">Вход</a></li>
+</ul>
+<H1 align="center">Взгляните на наши прекрасные туры!</H1>
+<table align="center" border="1">
+    <tr>
+        <th>Название</th>
+        <th>Длительность, дней</th>
+        <th>Количество человек в группе</th>
+        <th>Подходит для детей</th>
+        <th>Цена</th>
+    </tr>
+    {% for el in tours %}
+        <tr>
+            <th>{{ el.tour_name }}</th>
+            <th>{{ el.duration }}</th>
+            <th>{{ el.number_of_tourists }}</th>
+            <th> {% if el.is_available_for_children == True %}
+            	Да
+            {% endif %}
+            </th>
+            <th>{{ el.price }} р.</th>
+        </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

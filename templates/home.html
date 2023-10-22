@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title >Главная</title>
+    <link type="text/css" rel="stylesheet"  href="{% static 'common_styles.css' %}">
+</head>
+<body>
+    <ul class="menu">
+        <li><a href="/tours">Туры</a></li>
+        <li><a href="/home">Главная</a></li>
+        <li><a href="/registration_and_authentication">Регистрация </a></li>
+        <li><a href="/login">| Вход</a></li>
+    </ul>
+    <H1 align="center">ООО Туристическая компания</H1>
+    <p align="center">Мы предлагаем лучшие туры<br></p>
+    <H2 align="center">Вот, почему мы:</H2>
+<div>
+    <ol>
+        <li >Более 20-ти лет радуем гостей столицы радушным приёмом</li>
+        <li >Качественно и ответственно выполняем работу</li>
+        <li >Всегда и всё успеваем</li>
+        <li >Широчайший ассортимент туристических продуктов</li>
+        <li >Индивидуальный подход к каждому гостю</li>
+    </ol>
+</div>
+<H3>
+    Заинтересовались?<br>
+    Обратитесь к нашему менеджеру: <a href = "https://vk.com/michail.gorev" target="_blank">VK</a><br>
+    Или заполните форму:
+    <form name="contacts_for_feedback" method="post">
+        {% csrf_token %}
+        {{ form.name }}<br>
+        {{ form.e_mail }}<br>
+        {{ form.organization }}<br>
+        <input type="submit" name="submit" value="Свяжитесь со мной!">
+    </form>
+</H3>
+        <H2 align="center">
+            Мы на карте:
+        </H2>
+        <div style="position:relative;overflow:hidden;">
+        <iframe src="https://yandex.ru/map-widget/v1/?ll=37.617170%2C55.772545&mode=whatshere&whatshere%5Bpoint%5D=37.616898%2C55.772858&whatshere%5Bzoom%5D=17&z=18.68"
+                width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe>
+        </div>
+</body>
+
+</html>

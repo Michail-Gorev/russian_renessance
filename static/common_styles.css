@@ -1,0 +1,61 @@
+H1 {
+            font-family: Helvetica,  sans-serif;
+            font-size: 200%;
+            text-decoration: underline;
+            background-image: url(https://www.securitycode.ru/images/templates/sc2020/2dfef26344f749e254aede764f3ad02b.svg);
+}
+H2 {
+            font-family: Arial,  sans-serif;
+            font-size: 150%;
+            text-decoration: overline;
+}
+H3 {
+            font-family: Arial,  sans-serif;
+            text-align: center;
+            text-decoration: blink;
+}
+p {
+            font-family: Helvetica,  sans-serif;
+            font-size: 110%;
+            text-transform: uppercase;
+}
+div {
+            font-family: Arial,  sans-serif;
+            font-size: 50%;
+            text-align: center;
+}
+ol {
+            display: inline-block;
+}
+li {
+            font-family: Courier, serif;
+            font-size: 300%;
+            text-decoration: underline;
+            text-align: left;
+            line-height: 2;
+}
+.menu{
+            list-style-type: none;
+            padding-left: 0;
+            margin-left: 0;
+            background-color: coral;
+            overflow: hidden;
+}
+.menu a {
+            font-family: 'Lucida Grande', Arial, sans-serif;
+            font-size: 30%;
+            color: brown;
+}
+.menu li {
+            display: inline;
+}
+form{
+    background-color: aqua;
+}
+
+@media screen {
+     H1 {background-color: blue;}
+}
+@media handheld {
+    H1 {background-color: aquamarine;}
+}
