@@ -31,10 +31,6 @@ def get_client_ip(request):
     return ip
 
 
-class LoginUser(LoginView):
-    form_class = AuthenticationForm
-    template_name = 'login.html'
-    success_url = reverse_lazy('home')
 
 
 

@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 
 import homePage
 import registrationPage.views
@@ -26,8 +28,10 @@ from toursPage import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', homePage.views.home),
+    path('', homePage.views.home),
     path('tours/', toursPage.views.tours),
+    path('tours/<int:pk>', toursPage.views.TourDetailsView.as_view(), name='tour_details'),
     path('registration_and_authentication/', registrationPage.views.registration_and_authentication),
     path('about/', homePage.views.about),
-    path('login/', registrationPage.views.LoginUser.as_view),
-]
+    path('carousel/', toursPage.views.vision),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

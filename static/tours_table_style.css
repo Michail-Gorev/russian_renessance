@@ -1,0 +1,49 @@
+.table_tours {
+  width: 100%;
+  background: antiquewhite;
+  border-collapse: collapse;
+  border-left: 3px solid #F79361;
+  border-right: 3px solid #F79361;
+  border-bottom: 3px solid #F79361;
+  font-family: "Lucida Grande", sans-serif;
+ }
+.table_tours  caption {
+  background: #F79361;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 2px  4px 0 rgba(0,0,0,.3);
+  color: white;
+  font-family: "Roboto Slab",serif;
+  font-style: normal;
+  font-size: 26px;
+  text-align: center;
+  margin: 0;
+}
+.table_tours td, .table_tours th {
+  padding: 10px;
+}
+.table_tours th {
+  text-align: left;
+  font-size: 18px;
+}
+.table_tours tr:nth-child(2n) {
+  background: #E5E5E5;
+}
+.table_tours td:last-of-type {
+  text-align: center;
+}
+.table_tours a {
+  display: inline-block;
+  padding: 5px 10px;
+  background: #F79361;
+  box-shadow: 2px 2px 0 0 #a22800;
+  position: relative;
+  color: brown;
+}
+.table_tours a:hover {
+  box-shadow: none;
+  top: 2px;
+  left: 2px;
+  color: brown;
+}

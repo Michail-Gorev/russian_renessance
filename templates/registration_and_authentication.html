@@ -1,18 +1,7 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Регистрация и Вход</title>
-    <link type="text/css" rel="stylesheet"  href="{% static 'common_styles.css' %}">
-</head>
-<body>
-    <H1 align="center">Здесь будет страница регистрации и аутентификации пользователей!</H1>
-    <ul class="menu">
-        <li><a href="/tours">Туры</a></li>
-        <li><a href="/home">Главная</a></li>
-        <li><a href="/registration_and_authentication">Вход</a></li>
-    </ul>
+{% extends 'layout.html' %}
+
+{% block title %}Регистрация{% endblock %}
+{% block content %}
 <H3 align="center">
     Регистрация:
     <form name="registration_and_authentication" method="post">
@@ -24,5 +13,4 @@
         <input type="submit" name="submit" value="Зарегистрироваться">
     </form>
 </H3>
-</body>
-</html>
+{% endblock %}

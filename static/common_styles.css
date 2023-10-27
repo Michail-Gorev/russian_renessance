@@ -34,7 +34,7 @@ li {
             text-align: left;
             line-height: 2;
 }
-.menu{
+.menu {
             list-style-type: none;
             padding-left: 0;
             margin-left: 0;
@@ -51,6 +51,12 @@ li {
 }
 form{
     background-color: aqua;
+}
+
+img {
+  display: block;
+  width: 10%;
+  height: auto;
 }
 
 @media screen {

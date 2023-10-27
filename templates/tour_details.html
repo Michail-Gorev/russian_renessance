@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Подробнее о туре</title>
+    <script type="text/javascript" src="{% static 'carousel.js' %}"></script>
+    <link type="text/css" rel="stylesheet"  href="{% static 'tours_table_style.css' %}">
+</head>
+<table>
+    <tr>
+        <th>{{ tour_details.tour_name }}</th>
+    </tr>
+    <tr>
+        <th>{{ tour_details.description }}</th>
+    </tr>
+</table>
+</html>
