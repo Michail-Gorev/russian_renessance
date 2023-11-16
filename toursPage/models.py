@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+
 
 
 class Tour(models.Model):
@@ -8,9 +10,20 @@ class Tour(models.Model):
     number_of_tourists = models.IntegerField('Количество человек в группе', default=0)
     is_available_for_children = models.BooleanField('Подходит для детей', default=True)
     price = models.IntegerField('Стоимость', default=0)
+    cat = models.ForeignKey('Category', on_delete=models.PROTECT, null=True)
 
     def __str__(self):
         return self.tour_name
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=100, db_index=True)
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('category', kwargs={'cat_id': self.pk})
 
 
 class TourDetail(models.Model):

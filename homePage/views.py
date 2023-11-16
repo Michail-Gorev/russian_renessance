@@ -1,4 +1,3 @@
-
 from django.shortcuts import render
 
 from homePage.forms import UserForm
@@ -17,8 +16,6 @@ def home(request):
     }
     return render(request, 'home.html', data)
 
+
 def about(request):
-    return render(request,'about.html')
-
-
-
+    return render(request, 'about.html')

@@ -19,17 +19,17 @@ p {
             font-size: 110%;
             text-transform: uppercase;
 }
-div {
-            font-family: Arial,  sans-serif;
-            font-size: 50%;
-            text-align: center;
-}
+/*div {*/
+/*            font-family: Arial,  sans-serif;*/
+/*            font-size: 50%;*/
+/*            text-align: center;*/
+/*}*/
 ol {
             display: inline-block;
 }
-li {
+.list li {
             font-family: Courier, serif;
-            font-size: 300%;
+            font-size: 100%;
             text-decoration: underline;
             text-align: left;
             line-height: 2;
@@ -58,7 +58,6 @@ img {
   width: 10%;
   height: auto;
 }
-
 @media screen {
      H1 {background-color: blue;}
 }

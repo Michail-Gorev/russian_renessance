@@ -10,18 +10,32 @@
         <th>Количество человек в группе</th>
         <th>Подходит для детей</th>
         <th>Цена</th>
+        <th>Категория</th>
     </tr>
+    <script type="text/javascript">
+        // задаем массив ссылок на категории
+        var links = [];
+          links['1'] = '127.0.0.1:8000/tours/moscow';
+          links['2'] = '127.0.0.1:8000/tours/goldenring';
+          links['3'] = '127.0.0.1:8000/tours/sbp';
+    </script>
+    <select onchange="top.location= this.value">
+        <option value="/moscow">Москва</option>
+        <option value="/goldenring">золотое кольцо</option>
+        <option value="/sbp">Санкт-Петербург</option>
+    </select>
     {% for el in tours %}
-        <tr>
-            <th><a href="/tours/{{el.tour_id}}">{{ el.tour_name }}</a></th>
-            <th>{{ el.duration }}</th>
-            <th>{{ el.number_of_tourists }}</th>
-            <th> {% if el.is_available_for_children == True %}
-            	Да
-            {% endif %}
-            </th>
-            <th>{{ el.price }} р.</th>
-        </tr>
+                <tr>
+                    <th><a href="/tours/{{el.tour_id}}">{{ el.tour_name }}</a></th>
+                    <th>{{ el.duration }}</th>
+                    <th>{{ el.number_of_tourists }}</th>
+                    <th> {% if el.is_available_for_children == True %}
+                        Да
+                    {% endif %}
+                    </th>
+                    <th>{{ el.price }} р.</th>
+                    <th>{{ el.cat.name }}</th>
+                </tr>
     {% endfor %}
 </table>
 {% endblock %}

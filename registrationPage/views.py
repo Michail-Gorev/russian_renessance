@@ -7,6 +7,7 @@ from registrationPage.forms import CustomerForm, CustomerRegistrationForm
 
 
 # Create your views here.
+
 def registration_and_authentication(request):
     if request.method == 'POST':
         form = CustomerRegistrationForm(request.POST)
