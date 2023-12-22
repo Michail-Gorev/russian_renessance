@@ -5,6 +5,10 @@ from homePage.forms import UserForm
 
 # Create your views here.
 def home(request):
+    return render(request, 'home.html')
+
+
+def contacts(request):
     if request.method == 'POST':
         form = UserForm(request.POST)
 
@@ -14,7 +18,7 @@ def home(request):
     data = {
         'form': form
     }
-    return render(request, 'home.html', data)
+    return render(request, 'contacts.html', data)
 
 
 def about(request):

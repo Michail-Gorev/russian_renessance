@@ -1,0 +1,6 @@
+.text-for-links {
+  color: #663300 !important;
+}
+.text-for-links:hover, .text-for-links:active {
+  color: #664D33 !important;
+}

@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+    {% block title %}Отзывы{% endblock %}
+    {% block content %}
+        {% if user.is_authenticated %}
+            <div class="container align-content-end w-25 p-2">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <input class="btn btn-success" type="submit" />
+                </form>
+            </div>
+        {% endif %}
+        <div class="container w-100 p-2">
+            {% for el in reports %}
+            	<div class="w-100 mb-2">
+                    <p class="text-black-50 font-weight-bold">{{ el.username }}</p>
+                </div>
+                <div class="w-100 mb-2">
+                    <p class="text-muted">{{ el.tour }}</p>
+                </div>
+                <div class="w-100 mb-2">
+                    <p class="text-muted">{{ el.text }}</p>
+                </div>
+                <div class="w-100 mb-2">
+                    <p class="text-muted">{{ el.time }}</p>
+                </div>
+            {% endfor %}
+
+        </div>
+    {% endblock %}

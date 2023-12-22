@@ -2,7 +2,6 @@ from django.db import models
 from django.urls import reverse
 
 
-
 class Tour(models.Model):
     tour_id = models.IntegerField('ID тура', default=0)
     tour_name = models.CharField('Tour name', max_length=255, default='Название тура')

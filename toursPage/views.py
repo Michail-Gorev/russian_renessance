@@ -1,5 +1,8 @@
+from django.views import View
 from django.views.generic import DetailView
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+
+from djangoLab import settings
 from toursPage.models import Tour, Visual, TourDetail, Category
 
 
@@ -12,6 +15,18 @@ def tours(request):
                }
 
     return render(request, 'tours.html', context=context)
+
+
+class tourDeleteView(View):
+
+    def post(self, request, *args, **kwargs):
+        tour_id = kwargs.get('id')
+        tour = Tour.objects.get(tour_id=tour_id)
+        tour_detail = TourDetail.objects.get(tour_id=tour_id)
+        if tour and tour_detail:
+            tour.delete()
+            tour_detail.delete()
+        return redirect('tours')
 
 
 def show_category(request, cat_id):
@@ -33,3 +48,4 @@ class TourDetailsView(DetailView):
     model = TourDetail
     template_name = 'tour_details.html'
     context_object_name = 'tour_details'
+

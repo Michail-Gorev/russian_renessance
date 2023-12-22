@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% block title %}Контакты{% endblock %}
+    {% block content %}
+    <H3 align="center">
+        Заинтересовались нашими услугами?<br>
+    </H3>
+        Вы можете узнать подробнее в чате, расположенном внизу страницы, или по следующим контактам:<br>
+        <p>Тел. 89991234567 <br>
+            E-mail: moisha504@gmail.com</p>
+        <p align="center">Или закажите обратный звонок с помощью формы:</p>
+        <div class="container align-content-lg-center">
+            <form method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <input class="btn btn-success" type="submit" name="submit" value="Свяжитесь со мной!">
+            </form>
+        </div>
+    {% endblock %}

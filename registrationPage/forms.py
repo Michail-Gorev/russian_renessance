@@ -34,10 +34,12 @@ class CustomerForm(ModelForm):
 class CustomerRegistrationForm(UserCreationForm):
     username = forms.CharField(label='Логин', widget=forms.TextInput(attrs={'class': 'form-input'}))
     email = forms.EmailField(label='E-mail', widget=forms.EmailInput(attrs={'class': 'form-input'}))
+    first_name = forms.CharField(label="Ваше имя", widget=forms.TextInput(attrs={'class': 'form-input'}))
+    last_name = forms.CharField(label="Ваша фамилия", widget=forms.TextInput(attrs={'class': 'form-input'}))
     password1 = forms.CharField(label='Пароль', widget=forms.PasswordInput(attrs={'class': 'form-input'}))
     password2 = forms.CharField(label='Подтверждение пароля', widget=forms.PasswordInput(attrs={'class': 'form-input'}))
 
     class Meta:
         model = User
-        fields = ('username', 'email', 'password1', 'password2')
+        fields = ('username', 'email', 'first_name', 'last_name', 'password1', 'password2')
 

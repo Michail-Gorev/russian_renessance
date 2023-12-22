@@ -21,18 +21,26 @@ from django.conf.urls.static import static
 
 import homePage
 import registrationPage.views
+import reportsPage.views
 import toursPage
 from homePage import views
+from loginPage.views import profile_view
 from toursPage import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', homePage.views.home),
-    path('', homePage.views.home),
-    path('tours/', toursPage.views.tours),
+    path('contacts/', homePage.views.contacts),
+    path('reports/', reportsPage.views.feedback_form),
+    path('', homePage.views.home, name='home'),
+    path('/tours/', toursPage.views.tours, name='tours'),
     path('tours/<int:pk>', toursPage.views.TourDetailsView.as_view(), name='tour_details'),
-    path('registration_and_authentication/', registrationPage.views.registration_and_authentication),
-    path('about/', homePage.views.about),
-    path('accounts', include("django.contrib.auth.urls")),
-    path('tours/category/<int:cat_id>/', toursPage.views.show_category, name='category')
+    path('register', registrationPage.views.RegisterView.as_view(), name='register'),
+    path('about/', homePage.views.about, name='about'),
+    path('accounts/', include("django.contrib.auth.urls")),
+    path('profile', profile_view, name="profile"),
+    path('tours/category/<int:cat_id>/', toursPage.views.show_category, name='category'),
+    path('<int:id>/delete/', toursPage.views.tourDeleteView.as_view(), name='tour_delete'),
+    path('ajax/validate_username', registrationPage.views.validate_username, name='validate_username'),
+    path('ajax/validate_email', registrationPage.views.validate_email, name='validate_email'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

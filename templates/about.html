@@ -1,50 +1,31 @@
+{% extends 'layout.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="ru">
-  <head>
-    <title>О нас</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link type="text/css" rel="stylesheet"  href="{% static 'bootstrap/css/bootstrap.rtl.css' %}">
-    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
 
-  </head>
-    <body>
-        <header class="py-3 mb-3 border-bottom">
-    <div class="container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
-      <div class="dropdown">
-        <a href="#" class="d-flex align-items-center col-lg-4 mb-2 mb-lg-0 link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-          <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-        </a>
-        <ul class="dropdown-menu text-small shadow">
-          <li><a class="dropdown-item active" href="#" aria-current="page">Overview</a></li>
-          <li><a class="dropdown-item" href="#">Inventory</a></li>
-          <li><a class="dropdown-item" href="#">Customers</a></li>
-          <li><a class="dropdown-item" href="#">Products</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="#">Reports</a></li>
-          <li><a class="dropdown-item" href="#">Analytics</a></li>
-        </ul>
-      </div>
-
-      <div class="d-flex align-items-center">
-        <form class="w-100 me-3" role="search">
-          <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-        </form>
-
-        <div class="flex-shrink-0 dropdown">
-          <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-          </a>
-          <ul class="dropdown-menu text-small shadow">
-            <li><a class="dropdown-item" href="#">New project...</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
-          </ul>
+    {% block title %}О нас{% endblock %}
+    {% block content %}
+        <div class="align-content-lg-center">
+            <h1>Наша история:</h1>
+            <div class="history">
+                <p style="--font-family-sans-serif: Helvetica">
+                    Наш генеральный директор в далёком 1990-ом году, будучи молодым специалистом московского бюро экскурсий, загорелся
+                    идеей создания собственного туристического агентства, которое бы оказывало услуги
+                    высочайшего качества. Собрав вокруг себя единомышленников и поставив во главу угла радость,
+                    удобство и интересы людей, он основал ООО ТУРИСТИЧЕСКАЯ КОМПАНИЯ, которая на сегодняшний день
+                    является одним из ведущих поставщиков тур. услуг в Москве и России.
+                </p>
+            </div>
         </div>
-      </div>
-    </div>
-  </header>
-    </body>
-</html>
+            <figure class="text-end">
+                <blockquote class="blockquote-reverse">
+                    <p>"Гармоничное развитие личности для гармоничного развития государства"</p>
+                </blockquote>
+            <figcaption class="blockquote-footer">
+                    <cite title="Source Title">Девиз нашей компании</cite>
+            </figcaption>
+            </figure>
+            <div class="more">
+                <p style="--font-family-sans-serif: Helvetica">
+                    Скоро здесь будет больше информации о нас
+                </p>
+            </div>
+    {% endblock %}

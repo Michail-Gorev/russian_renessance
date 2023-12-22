@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    {#        registration.html dependencies#}
+    <link rel="stylesheet" type="text/css" href="{% static 'registration.css' %}">
+    <script type="text/javascript" href="{% static 'register.js' %}"></script>
+</head>
+<body>
+    <div class="form-body">
+        <div class="row">
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3>Создание аккаунта</h3>
+                        <p>Заполните поля ниже:</p>
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="col-md-12">
+                               <input id="input_username" class="form-control" type="text" name="username" placeholder="Придумайте псевдоним" required>
+                            </div>
+
+                            <div class="col-md-12">
+                                <input id="input_email" class="form-control" type="email" name="email" placeholder="Ваш e-mail" required>
+                            </div>
+                            <div class="col-md-12">
+                                <input class="form-control" type="text" name="first_name" placeholder="Ваше имя" required>
+                            </div>
+                            <div class="col-md-12">
+                                <input class="form-control" type="text" name="last_name" placeholder="Ваша фамилия" required>
+                            </div>
+                           <div class="col-md-12">
+                                <select title="choose_role" id="choose_role" class="form-select mt-3" required>
+                                      <option selected disabled value="">Роль</option>
+                                      <option value="tourist">Турист</option>
+                                      <option value="manager">Представитель компании</option>
+                               </select>
+                           </div>
+                           <div class="col-md-12">
+                              <input class="form-control" type="password" name="password1" placeholder="Пароль" required>
+                           </div>
+                            <div class="col-md-12">
+                              <input class="form-control" type="password" name="password2" placeholder="Подтверждение пароля" required>
+                           </div>
+                        <div class="form-check">
+                          <input title="info_is_correct" class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                          <label class="form-check-label">Подтверждаю, что информация корректна</label>
+                        </div>
+                            <button title="register_button" id="submit" type="submit" class="btn btn-success">Зарегистрироваться</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#input_username').keyup(function (){
+                $.ajax(
+                    {
+                        data: $(this).serialize(),
+                        url: '{% url 'validate_username' %}',
+                        success:
+                            function (response) {
+                            if ($('#usernameerror').length == 0)
+                                $('#input_username').after('<div title="invalid_username_warning" class="invalid-feedback d-block"id="usernameerror"></div>');
+                            if (response.taken == true) {
+                                $('#input_username').removeClass('is-valid').addClass('is-invalid');
+                                $('#usernameerror').removeClass('valid-feedback').addClass('invalid-feedback');
+                                $('#usernameerror').text('Пользователь с таким именем уже существует')
+                                $('#submit').prop('disabled', true);
+                            }else {
+                                $('#input_username').removeClass('is-invalid').addClass('is-valid');
+                                $('#usernameerror').removeClass('invalid-feedback').addClass('valid-feedback');
+                                $('#usernameerror').text('Этот псевдоним свободен')
+                                $('#submit').prop('disabled', false);
+                            }
+                            },
+                        error: function (response) {
+                            console.log(response.responseJSON.errors);
+                        }
+                    }
+                )
+            });
+            return false
+        });
+    </script>
+        <script>
+        $(document).ready(function () {
+            $('#input_email').keyup(function (){
+                $.ajax(
+                    {
+                        data: $(this).serialize(),
+                        url: '{% url 'validate_email' %}',
+                        success:
+                            function (response) {
+                            if ($('#emailerror').length == 0)
+                                $('#input_email').after('<div title="invalid_email_warning" class="invalid-feedback d-block"id="emailerror"></div>');
+                            if (response.taken == true) {
+                                $('#input_email').removeClass('is-valid').addClass('is-invalid');
+                                $('#emailerror').removeClass('valid-feedback').addClass('invalid-feedback');
+                                $('#emailerror').text('Пользователь с таким email уже существует')
+                                $('#submit').prop('disabled', true);
+                            }else {
+                                $('#input_email').removeClass('is-invalid').addClass('is-valid');
+                                $('#emailerror').removeClass('invalid-feedback').addClass('valid-feedback');
+                                $('#emailerror').text('Прекрасный email')
+                                $('#submit').prop('disabled', false);
+                            }
+                            },
+                        error: function (response) {
+                            console.log(response.responseJSON.errors);
+                        }
+                    }
+                )
+            });
+            return false
+        });
+    </script>
+</body>
+</html>

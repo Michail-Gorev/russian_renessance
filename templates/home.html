@@ -1,36 +1,24 @@
 {% extends 'layout.html' %}
-    {% block title %}Главная{% endblock %}
+{% load crispy_forms_tags %}
+{% block title %}Главная{% endblock %}
     {% block content %}
-
-        <H1 align="center">ООО Туристическая компания</H1>
+        <h1 align="center">ООО Туристическая компания</h1>
         <p align="center">Мы предлагаем лучшие туры<br></p>
         <H2 align="center">Вот, почему мы:</H2>
-    <div>
-        <ol>
-            <li >Более 20-ти лет радуем гостей столицы радушным приёмом</li>
-            <li >Качественно и ответственно выполняем работу</li>
-            <li >Всегда и всё успеваем</li>
-            <li >Широчайший ассортимент туристических продуктов</li>
-            <li >Индивидуальный подход к каждому гостю</li>
-        </ol>
+    <div align="center">
+        <ul>
+            <li style="list-style-type: none">Более 20-ти лет радуем гостей столицы радушным приёмом</li>
+            <li style="list-style-type: none">Качественно и ответственно выполняем работу</li>
+            <li style="list-style-type: none">Всегда и всё успеваем</li>
+            <li style="list-style-type: none">Широчайший ассортимент туристических продуктов</li>
+            <li style="list-style-type: none">Индивидуальный подход к каждому гостю</li>
+        </ul>
     </div>
-    <H3>
-        Заинтересовались?<br>
-        Обратитесь к нашему менеджеру: <a href = "https://vk.com/michail.gorev" target="_blank">VK</a><br>
-        Или заполните форму:
-        <form name="contacts_for_feedback" method="post">
-            {% csrf_token %}
-            {{ form.name }}<br>
-            {{ form.e_mail }}<br>
-            {{ form.organization }}<br>
-            <input type="submit" name="submit" value="Свяжитесь со мной!">
-        </form>
-    </H3>
             <H2 align="center">
                 Мы на карте:
             </H2>
-            <div style="position:relative;overflow:hidden;">
-            <iframe src="https://yandex.ru/map-widget/v1/?ll=37.617170%2C55.772545&mode=whatshere&whatshere%5Bpoint%5D=37.616898%2C55.772858&whatshere%5Bzoom%5D=17&z=18.68"
-                    width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe>
+            <div style="position:relative;overflow:hidden;" align="center" class="mb-5">
+                <iframe src="https://yandex.ru/map-widget/v1/?ll=37.617170%2C55.772545&mode=whatshere&whatshere%5Bpoint%5D=37.616898%2C55.772858&whatshere%5Bzoom%5D=17&z=18.68"
+                    width="300" height="200" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe>
             </div>
     {% endblock %}

@@ -1,17 +1,19 @@
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
+from django.views.generic import CreateView, FormView
 
-from registrationPage.forms import CustomerForm, CustomerRegistrationForm
+from registrationPage.forms import CustomerRegistrationForm
 
 
 # Create your views here.
 
-def registration_and_authentication(request):
+def register(request):
     if request.method == 'POST':
         form = CustomerRegistrationForm(request.POST)
-
         if form.is_valid():
             form.save()
     form = CustomerRegistrationForm()
@@ -19,8 +21,24 @@ def registration_and_authentication(request):
         'form': form
     }
     get_client_ip(request)
-    return render(request, "registration_and_authentication.html", data)
+    return render(request, "registration/registration.html", data)
 
+
+class RegisterView(FormView):
+    form_class = CustomerRegistrationForm
+    template_name = 'registration/registration.html'
+    success_url = reverse_lazy('login')
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+
+def validate_username(request):
+    username = request.GET.get('username', None)
+    response = {
+        'taken': User.objects.filter(username__exact=username).exists()
+    }
+    return JsonResponse(response)
 
 def get_client_ip(request):
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
@@ -32,6 +50,9 @@ def get_client_ip(request):
     return ip
 
 
-
-
-
+def validate_email(request):
+    email = request.GET.get('email', None)
+    response = {
+        'taken': User.objects.filter(email__exact=email).exists()
+    }
+    return JsonResponse(response)

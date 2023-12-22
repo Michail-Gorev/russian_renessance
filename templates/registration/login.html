@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <script type="text/javascript" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Вход</title>
+</head>
+<body>
+<div class="container">
+	<div class="row d-flex justify-content-center mt-5">
+		<div class="col-12 col-md-8 col-lg-6 col-xl-5">
+			<div class="card py-3 px-2">
+				<p class="text-center mb-3 mt-2">ВХОД В СИСТЕМУ</p>
+				<div class="division">
+					<div class="row">
+						<div class="col-3"><div class="line l"></div></div>
+						<div class="col-6"><span>Войдите с e-mail</span></div>
+						<div class="col-3"><div class="line r"></div></div>
+					</div>
+				</div>
+				<form class="myform" method="post">
+                    {% csrf_token %}
+					<div class="form-group">
+    					<input type="text" name="username" class="form-control" placeholder="Введите логин">
+  					</div>
+ 					<div class="form-group">
+    					<input type="password" name="password" class="form-control" placeholder="Введите пароль">
+  					</div>
+  					<bt class="row">
+  						<div class="col-md-6 col-12">
+  							<div class="form-group form-check">
+    							<input type="checkbox" class="form-check-input" id="exampleCheck1">
+    							<label class="form-check-label" for="exampleCheck1">Запомнить меня</label>
+  							</div>
+  						</div>
+                        <button class="btn-danger btn w-25 ml-2" onclick="location.href='{% url 'password_reset' %}">Забыли пароль?</button>
+                        <div class="col-md-6 col-12 bn"><a href="{% url 'register' %}">Нет аккаунта?</a></div>
+  					</div>
+                    {{ form.errors }}
+  					<div class="form-group mt-3">
+  						<button type="submit" class="btn btn-block btn-primary btn-lg"><small><i class="far fa-user pr-2"></i>Войти</small></button>
+  					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
