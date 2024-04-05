@@ -24,7 +24,10 @@
                                                                     </div>
                                                                     <h6 class="f-w-600">{{ user.name }}</h6>
                                                                     <p>{{ user.username }}</p>
-                                                                    <button class="btn btn-sm btn-danger mb-2" onclick="location.href='{% url 'logout' %}?next=/profile'">Выйти</button>
+                                                                    <form method="post" action="{% url 'logout' %}?next=/home">
+                                                                        {% csrf_token %}
+                                                                        <button class="btn btn-sm btn-danger mb-2" type="submit">Выйти</button>
+                                                                    </form>
                                                                     {% if user.is_superuser %}
                                                                         <button class="btn btn-sm btn-light" onclick="location.href='/admin'">Админка</button>
                                                                     {% endif %}

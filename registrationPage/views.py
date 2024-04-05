@@ -1,10 +1,8 @@
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-from django.contrib.auth.views import LoginView
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, FormView
+from django.views.generic import FormView
 
 from registrationPage.forms import CustomerRegistrationForm
 
